@@ -6,43 +6,45 @@
 #    By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 14:23:40 by flcristi          #+#    #+#              #
-#    Updated: 2023/05/29 15:45:56 by flcristi         ###   ########.fr        #
+#    Updated: 2023/05/29 20:44:19 by flcristi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minitalk
 
-SERVER = server
+SERVER = 		server
+SRC_SERVER =	server.c
+OBJ_SERVER =	$(SRC_SERVER:%.c=%.o)
 
-CLIENT = client
+CLIENT =		client
+SRCS_CLIENT =	client.c
+OBJ_CLIENT =	$(SRC_CLIENT:%.c=%.o)
 
-OBJS = 
-SRCS =	client.c \
-		server.c \
-
-
-LIBFT_DIR = ./libft/
+LIBFT_DIR = libft/
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
 CC = cc
-FLAGS = -Wall -Werror -Wextra 
-FLAGS_MLX = -lmlx -lX11 -Imlx -lXext
+FLAGS = -Wall -Werror -Wextra -g3
 
 all: libft $(NAME)
 
-objects/%.o: source/%.c includes/fractol.h
-	mkdir -p $(OBJS_DIR)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+%.o: %.c 
+	$(CC) $(FLAGS) -c $< -o $@ -I.
 
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INCLUDES) $^ $(LIBFT) $(FLAGS_MLX) -o $@
+$(NAME): $(SERVER) $(CLIENT)
+
+$(SERVER): $(OBJ_SERVER)
+	$(CC) $(FLAGS) $(SRC_SERVER) $^ $(LIBFT) -o $(SERVER)
+
+$(CLIENT): $(OBJ_CLIENT)
+	$(CC) $(FLAGS) $(SRC_CLIENT) $^ $(LIBFT) -o $(CLIENT)
 
 libft:
 	@make -C ./libft
 
 clean:
 	make clean -C ./libft
-	rm -rf $(OBJS_DIR)
+	rm -rf $(OBJS)
 
 fclean:clean
 	make fclean -C ./libft
