@@ -6,11 +6,15 @@
 #    By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 14:23:40 by flcristi          #+#    #+#              #
-#    Updated: 2023/05/29 14:24:24 by flcristi         ###   ########.fr        #
+#    Updated: 2023/05/29 15:45:56 by flcristi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minitalk
+
+SERVER = server
+
+CLIENT = client
 
 OBJS = 
 SRCS =	client.c \
