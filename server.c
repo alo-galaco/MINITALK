@@ -6,7 +6,7 @@
 /*   By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:52:52 by flcristi          #+#    #+#             */
-/*   Updated: 2023/05/30 15:28:52 by flcristi         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:28:33 by flcristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	void	server_error(void)
 {
 	ft_putstr_fd("Invalid arguments\n", 1);
-	ft_putstr_fd("HELP", 1);
+	exit(1);
 }
 
 static	void	print_pid(void)
@@ -25,7 +25,7 @@ static	void	print_pid(void)
 	ft_putchar_fd ('\n', 1);
 }
 
-void	signal_handler(int signal, siginfo_t *info, void *context)
+static void	signal_handler(int signal, siginfo_t *info, void *context)
 {
 	static int	bit = 0;
 	static int	byte = 0;
