@@ -6,7 +6,7 @@
 /*   By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:52:52 by flcristi          #+#    #+#             */
-/*   Updated: 2023/05/30 16:28:33 by flcristi         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:39:38 by flcristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static void	signal_handler(int signal, siginfo_t *info, void *context)
 		bit = 0;
 		byte = 0;
 	}
+	if (signal == SIGUSR1)
+		kill(info->si_pid, SIGUSR1);
+	else
+		kill(info->si_pid, SIGUSR2);
 }
 
 int	main(int argc, char **argv)

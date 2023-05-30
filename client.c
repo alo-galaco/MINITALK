@@ -6,7 +6,7 @@
 /*   By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:52:49 by flcristi          #+#    #+#             */
-/*   Updated: 2023/05/30 16:28:42 by flcristi         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:05:54 by flcristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	main(int argc, char **argv)
 	size_t	i;
 	int		server_pid;
 
+	if (argc != 3)
+	{
+		client_error();
+		exit(1);
+	}
 	g_bit = 0;
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
@@ -67,6 +72,4 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
-	else
-		client_error();
 }
