@@ -6,20 +6,17 @@
 /*   By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:52:49 by flcristi          #+#    #+#             */
-/*   Updated: 2023/05/29 20:27:37 by flcristi         ###   ########.fr       */
+/*   Updated: 2023/05/29 21:21:31 by flcristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	main(int argc, int **argv)
+int main(int argc, char **argv)
 {
     struct sigaction	action;
 	sigset_t			sigset;
 
-	if (argc != 3)
-		error("Invalid arguments\n")
-	pid = ft_atoi(argv[1]);
 	sigemptyset(&sigset);
 	sigaddset(&sigset, SIGUSR1);
 	sigaddset(&sigset, SIGUSR2);
