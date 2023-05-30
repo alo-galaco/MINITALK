@@ -6,7 +6,7 @@
 /*   By: flcristi <flcristi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:52:49 by flcristi          #+#    #+#             */
-/*   Updated: 2023/05/29 22:06:19 by flcristi         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:43:25 by flcristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	void	signal_handler(int sig)
 		g_bit++;
 	else
 	{
-		ft_putstr_fd("\tError", 1)
+		ft_putstr_fd("\tError", 1);
 		exit(1);
 	}
 }
@@ -39,7 +39,7 @@ void	bit_by_bit(int server_pid, char c)
 	while (g_bit < 8)
 	{
 		if ((128 >> g_bit) & c)
-			kill(server_pid, SIGUSR2)
+			kill(server_pid, SIGUSR2);
 		else
 			kill(server_pid, SIGUSR1);
 		usleep(100);
@@ -68,6 +68,4 @@ int	main(int argc, char **argv)
 		bit_by_bit(server_pid, argv[2][i]);
 		i++;
 	}
-	else
-		client_error();
 }
